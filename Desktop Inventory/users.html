@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+  <link rel="stylesheet" href="users.css">
+</head>
+
+<body>
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    <div class="user-info">
+      <img src="profilelogo.png" alt="Profile Icon" class="profile-icon"> 
+      <span>John Doe</span>
+    </div>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="RecreatedFIGMAlogo.PNG" alt="Company Icon" class="company-icon">
+    </div>
+    <ul>
+      <li><a href="Assets.html"><span class="profile-icon"></span>ASSETS</a></li>
+      <li><a href="users.html"><span class="Userdashboard-icon"></span>USERS</a></li>
+      <li><a href="login.html"><span class="exit-icon"></span>LOGOUT</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Copyright ©2021 SITESPILL. All Rights Reserved</p>
+  </footer>
+
+  <script src="Home.js"></script>
+  <script>
+    function toggleSidebar() {
+      let sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+    }
+  </script>
+
+</body>
+</html>
