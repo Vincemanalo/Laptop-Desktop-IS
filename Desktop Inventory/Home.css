@@ -1,0 +1,261 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: none;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.company-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a .icon {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Main content styles */
+#main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.box-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.box-container > div {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 22%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box-container-Num {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.box-container-txt {
+    font-size: 16px;
+    color: #777;
+}
+
+.Num-laptop {
+    font-size: clamp(16px, 4vw, 24px);
+    position: absolute;
+    bottom: 57%;
+    padding: 5px;
+}
+
+.Num-of-laptop,
+.Num-of-desktop,
+.Num-of-accessorries,
+.Num-of-device-parts {
+    width: 250px; /* Fixed width */
+    height: 250px;
+    background-color: rgb(252, 254, 255);
+    border: 2px solid rgb(183, 183, 183);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Num-of-accessorries {
+    border: 2px solid rgb(0, 0, 0);
+}
+
+
+
+.table-container {
+    width: 90%;  /* You can adjust this percentage to fit your layout */
+    max-width: 1200px; /* Limit the maximum width if needed */
+    overflow-x: auto;  /* Enable horizontal scrolling if the table exceeds the width */
+    overflow-y: auto;  /* Enable vertical scrolling if needed */
+    max-height: 400px;  /* Adjust the height as needed */
+    display: block;  /* Ensure this doesn't affect other content */
+    margin: 0 auto;  /* Center the table horizontally within the parent container */
+}
+
+/* Ensure table columns do not stretch unnecessarily */
+.dashboard-grid {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.parent-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+}
+
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+    max-height: 200px; /* Adjust height if needed */
+}
+
+table {
+    width: 100%; /* Adjust the width */
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+td, th {
+    padding: 0.5rem;
+    text-align: left;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+th {
+    text-align: center;
+    font-weight: 200;
+    color: #f6f8fb;
+    background-color: #23415e;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #dadada;
+}
+
+tr:hover {
+    background-color: #65a9ee;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    #main-content {
+        margin-left: 200px;
+    }
+
+    .box-container > div {
+        width: 48%;
+    }
+
+    .menu-icon {
+        font-size: 25px;
+    }
+
+    .profile-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Sidebar toggle */
+#sidebar.active {
+    display: flex;
+}
