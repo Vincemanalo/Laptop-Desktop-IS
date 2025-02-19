@@ -1,11 +1,6 @@
-// Function to toggle the sidebar
 function toggleSidebar() {
   let sidebar = document.getElementById("sidebar");
   sidebar.classList.toggle("active");
-}
-
-function toggleSidebar() {
-  document.getElementById("sidebar").classList.toggle("active");
 }
 
 // Function to close the sidebar when clicking outside of it
@@ -131,3 +126,151 @@ function customDateInput(selectElement) {
     customDateInput.style.display = selectElement.value === "custom" ? "block" : "none";
 }
 
+//POP UP 
+
+document.addEventListener("DOMContentLoaded", function () {
+  let addButton = document.querySelector(".add-button");
+  if (addButton) {
+      addButton.addEventListener("click", () => {
+          closeAllForms();
+          document.getElementById("add-form").classList.add("active");
+      });
+  } else {
+      console.error("❌ Add button not found!");
+  }
+});
+
+
+  let laptops = JSON.parse(localStorage.getItem("laptops")) || [];
+
+  function renderTable() {
+      laptopTableBody.innerHTML = "";
+      laptops.forEach((laptop, index) => {
+          let row = `<tr id="row-${index}">
+              <td>${index + 1}</td>
+              <td>${laptop.name}</td>
+              <td>${laptop.serialNumber}</td>
+              <td>${laptop.location}</td>
+              <td>
+                  <button onclick="editLaptop(${index})">✏ Edit</button>
+                  <button onclick="deleteLaptop(${index})">🗑 Delete</button>
+              </td>
+          </tr>`;
+          laptopTableBody.innerHTML += row;
+      });
+      localStorage.setItem("laptops", JSON.stringify(laptops));
+  }
+
+  renderTable();
+
+  // Sidebar Toggle
+  function toggleSidebar() {
+      let sidebar = document.getElementById("sidebar");
+      if (sidebar) {
+          sidebar.classList.toggle("active");
+      } else {
+          console.error("❌ Sidebar not found");
+      }
+  }
+
+  window.toggleSidebar = toggleSidebar; // Ensure it's accessible globally
+
+  // Open Modal
+  window.openModal = function () {
+      let modal = document.getElementById("laptop-modal");
+      if (!modal) {
+          console.error("❌ Modal not found");
+          return;
+      }
+
+      document.getElementById("modal-title").textContent = "Add Laptop";
+      document.getElementById("submit-button").textContent = "➕ Add Laptop";  
+
+      let laptopForm = document.getElementById("laptop-form");
+      if (laptopForm) laptopForm.reset();
+
+      modal.style.display = "flex";
+  };
+
+  // Close Modal
+  window.closeModal = function () {
+      let modal = document.getElementById("laptop-modal");
+      if (modal) modal.style.display = "none";
+  };
+
+  // Form Submission
+  document.getElementById("laptop-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let name = document.getElementById("laptop-name").value.trim();
+      let serialNumber = document.getElementById("serial-number").value.trim();
+      let location = document.getElementById("location").value.trim();
+
+      if (!name || !serialNumber || !location) {
+          alert("❌ Please fill out all fields.");
+          return;
+      }
+
+      let editIndex = document.getElementById("edit-index").value;
+      if (editIndex === "") {
+          laptops.push({ name, serialNumber, location });
+      } else {
+          laptops[editIndex] = { name, serialNumber, location };
+          document.getElementById("edit-index").value = "";
+      }
+
+      document.getElementById("laptop-form").reset();
+      closeModal();
+      renderTable();
+  });
+
+  // Delete Laptop
+  window.deleteLaptop = function (index) {
+      if (confirm("Are you sure you want to delete this laptop?")) {
+          laptops.splice(index, 1);
+          renderTable();
+      }
+  };
+
+  // Edit Laptop
+  window.editLaptop = function (index) {
+      let laptop = laptops[index];
+      document.getElementById("laptop-name").value = laptop.name;
+      document.getElementById("serial-number").value = laptop.serialNumber;
+      document.getElementById("location").value = laptop.location;
+      document.getElementById("edit-index").value = index;
+
+      document.getElementById("modal-title").textContent = "Edit Laptop";
+      document.getElementById("submit-button").textContent = "✏ Update Laptop";
+      document.getElementById("laptop-modal").style.display = "flex";
+  };
+
+//TABLE CRUD
+
+function toggleBoolean(cell) {
+  let trueValues = ["TRUE", "Working"];
+  let falseValues = ["FALSE", "Broken"];
+  
+  if (trueValues.includes(cell.textContent)) {
+      cell.textContent = falseValues[trueValues.indexOf(cell.textContent)];
+      cell.classList.add("false");
+  } else if (falseValues.includes(cell.textContent)) {
+      cell.textContent = trueValues[falseValues.indexOf(cell.textContent)];
+      cell.classList.remove("false");
+  }
+}
+
+function updateDurations() {
+  let today = new Date();
+  document.querySelectorAll(".calculate-duration").forEach(cell => {
+      let dateText = cell.dataset.date;
+      if (dateText) {
+          let date = new Date(dateText);
+          let diff = today - date;
+          let years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+          let months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+          let days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+          cell.textContent = `${years} years, ${months} months, ${days} days`;
+      }
+  });
+}
+window.onload = updateDurations;

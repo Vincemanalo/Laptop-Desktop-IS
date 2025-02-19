@@ -30,9 +30,7 @@
           </svg> ASSETS
         </a>
         <ul class="dropdown-menu">
-          <li><a href="Asset1.html">Asset 1</a></li>
-          <li><a href="Asset2.html">Asset 2</a></li>
-          <li><a href="Asset3.html">Asset 3</a></li>
+          <li><a href="laptop.html">Laptop</a></li>
         </ul>
       </li>
   
@@ -50,83 +48,116 @@
   
   <section class="list-section">
     <div class="list-header">
-      <div class="list-title">Assets</div>
+      <div class="list-title">Assets - Laptop</div>
       <div class="search-container">
         <span class="search-icon">🔍</span>
         <input type="text" class="search-input" placeholder="Search">
       </div>
     </div>
+    
+    <div class="list-header">
+      <button class="add-laptop-btn" onclick="openModal()">➕ Add Laptop</button>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="laptop-modal" class="modal">
+      <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">×</span>
+          <h2 id="modal-title">Add Laptop</h2>
+          <form id="laptop-form">
+              <input type="hidden" id="edit-index">
+              
+              <label for="laptop-name">Laptop Name:</label>
+              <input type="text" id="laptop-name" required>
+              
+              <label for="serial-number">Serial Number:</label>
+              <input type="text" id="serial-number" required>
+              
+              <label for="location">Location:</label>
+              <input type="text" id="location" required>
+              
+              <button type="submit" id="submit-button">➕ Add Laptop</button>
+          </form>
+      </div>
+  </div>
 
     <main class="main-content">
       <div class="parent-container">
           <div class="dashboard-card">
               <div class="table-container">
-                  <table>
-                      <thead>
-                          <tr>
-                              <th>Header 1</th>
-                              <th>Header 2</th>
-                              <th>Header 3</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                          <tr>
-                              <td>Data 1</td>
-                              <td>Data 2</td>
-                              <td>Data 3</td>
-                          </tr>
-                      </tbody>
-                  </table>
+                <table id="laptop-table" border="1">
+                  <tr>
+                    <th>Laptop ID</th>
+                    <th>Name</th>
+                    <th>Purchased Date</th>
+                    <th>Laptop Age</th>
+                    <th>Serial Number</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Assigned Personnel</th>
+                    <th>Assigned Personnel (Employment Date)</th>
+                    <th>Assigned Personnel (Employment Period)</th>
+                    <th>Total Duration (6 Years To Grant Laptop)</th>
+                    <th>Total Duration (6 Years To Grant Next Laptop)</th>
+                    <th>Granted Laptop</th>
+                    <th>Granted 2nd Laptop</th>
+                    <th>Last Time Granted Laptop</th>
+                    <th>Duration of Last Time Granted Laptop (as of today)</th>
+                    <th>Condition</th>
+                    <th>Inspection Frequency</th>
+                    <th>Inspected By</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Dell Inspiron 3501 Series</td>
+                  <td data-date="2021-12-20">December 20, 2021</td>
+                  <td class="calculate-duration" data-date="2021-12-20"></td>
+                  <td>7KJ2PH3</td>
+                  <td>New Laptop Dell (Mat Black)</td>
+                  <td>
+                      <select>
+                          <option>1NK Center</option>
+                          <option>2nd Office</option>
+                          <option>Warehouse</option>
+                      </select>
+                  </td>
+                  <td>
+                    <select>
+                      <option>Sir Benjie</option>
+                      <option>Ma'am Bev</option>
+                      <option>Cedric Lunar</option>
+                      <option>Kimm Carl Buban</option>
+                      <option>Jhomark Alber</option>
+                      <option>Justmyr Rodriguez</option>
+                      <option>Raymart Castillo</option>
+                      <option>John Kenneth Fajiculay</option>
+                      <option>Cheli Ann</option>
+                  </select>
+                  </td>
+                  <td data-date="2018-09-01">September 1, 2018</td>
+                  <td class="calculate-duration" data-date="2018-09-01"></td>
+                  <td>9 years, 6 months, 0 weeks, 6 days</td>
+                  <td></td>
+                  <td onclick="toggleBoolean(this)">FALSE</td>
+                  <td onclick="toggleBoolean(this)">FALSE</td>
+                  <td></td>
+                  <td class="calculate-duration" data-date=""></td>
+                  <td onclick="toggleBoolean(this)">Working</td>
+                  <td>Quarterly</td>
+                  <td>
+                      <select>
+                          <option>Cedric Lunar</option>
+                          <option>Kimm Carl Buban</option>
+                          <option>Jhomark Alber</option>
+                          <option>Justmyr Rodriguez</option>
+                          <option>Raymart Castillo</option>
+                          <option>John Kenneth Fajiculay</option>
+                          <option>Cheli Ann</option>
+                      </select>
+                  </td>
+              </tr>
+              </table>
+              
               </div>
           </div>
       </div>
