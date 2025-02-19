@@ -45,7 +45,7 @@
             </svg> LOGOUT</a></li>
         </ul>
       </div>
-      
+
     <div id="main-content">
         <div class="box-container">
             <div>
@@ -78,8 +78,9 @@
 
         </div>
         
-
         <main class="main-content">
+                                       <!-- Add this button above the table -->
+        <button id="open-modal" class="add-button">+ Add New Laptop</button>
             <div class="parent-container">
                 <div class="dashboard-card">
                     <div class="table-container">
@@ -93,21 +94,42 @@
                                 <th>Description</th>
                                 <th>Location</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Dell Inspiron 3501 Series</td>
-                                <td>December 20, 2021</td>
-                                <td>3 years, 1 months, 2 weeks, 2 days</td>
-                                <td>7KJ2PH3</td>
-                                <td>New Laptop Dell (Mat Black)</td>
-                                <td>1NK Center</td>
+                            <tbody></tbody> <!-- 🔹 Data will be inserted here -->
                         </table>
-                </div>
-
+                    </div>
                 </div>
 
                 </div>
             </div>
+
+
+
+<!-- Updated Modal Structure -->
+<div id="laptop-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add Laptop</h2>
+        <form id="laptop-form">
+            <div class="form-group">
+                <label>Device Name:</label>
+                <input type="text" id="device-name" required>
+            </div>
+            <div class="form-group">
+                <label>Serial Number:</label>
+                <input type="text" id="serial-number" required>
+            </div>
+            <div class="form-group">
+                <label>Purchase Date:</label>
+                <input type="date" id="purchase-date" required>
+            </div>
+            <!-- Add other fields as needed -->
+            <div class="form-actions">
+                <button type="submit">Save</button>
+                <button type="button" class="cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
 
             
     </main>
