@@ -19,6 +19,7 @@
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <img src="RecreatedFIGMAlogo.PNG" alt="Company Icon" class="company-icon">
+      <button class="close-btn" style="font-size: 200%;" onclick="closeSidebar()">☰</button>
     </div>
 
     <ul>
@@ -71,7 +72,7 @@
             <button id="open-modal" class="add-button">+ Add New Laptop</button>
             <div class="popup-form"></div>
             <form id="laptop-form" class="fillup-form">
-              <button type="button" class="close-btn" onclick="closeModal()">×</button>
+              <button type="button" class="close-btn" id="close-modal" onclick="closeModal()">×</button>
               <h2>Add Laptop</h2>
               <label for="employee">Employee Name:</label>
               <input type="text" id="employee" placeholder="Enter name" required>
@@ -82,7 +83,7 @@
               <label for="purchase-date">Purchase Date:</label>
               <input type="date" id="purchase-date" required>
               <div class="button-container">
-                <button class="cancel" type="button" onclick="closeModal()">Cancel</button>
+                <button class="cancel" type="button" id="cancel-modal" onclick="closeModal()">Cancel</button>
                 <button class="save" type="submit">Save</button>
               </div>
             </form>
@@ -178,6 +179,10 @@
     function toggleSidebar() {
       let sidebar = document.getElementById("sidebar");
       sidebar.classList.toggle("open");
+    }
+    function closeSidebar() {
+      let sidebar = document.getElementById('sidebar');
+      sidebar.classList.remove('open');
     }
   </script>
 </body>

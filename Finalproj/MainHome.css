@@ -9,10 +9,11 @@
 :root {
     --color1: #FBFBFB; /* Main Background */
     --color2: #3674B5; /* Lining, Header, Footer */
-    --color3: #578FCA; /* Table Header Background */
+    --color3: 	#585858; /* Table Header Background */
     --color4: #A1E3F9; /* Table Contents & Card Background */
     --color5: #D1F8EF; /* Table Background */
-    --font-color: #000957; /* Deep Blue Font Color */
+    --font-color: black    ; /* Deep Blue Font Color */
+    --header-color: white;
 }
 
 /* Global Styles */
@@ -75,7 +76,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #23415e;
+    background-color: #333333;
+    ;
     color: white;
     padding: 10px 20px;
 }
@@ -117,6 +119,21 @@ header {
     left: 0;
 }
 
+.sidebar.close {
+    width: 250px;
+    height: 100vh;
+    background-color: #f7f7f7;
+    padding-top: 20px;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease-in-out;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #main-content {
     transition: margin-left 0.3s ease-in-out;
 }
@@ -124,6 +141,11 @@ header {
 .sidebar.open + #main-content {
     margin-left: 250px;
 }
+
+.sidebar.close + #main-content {
+    margin-left: 0px;
+}
+
 
 .sidebar-header {
     text-align: center;
@@ -302,7 +324,7 @@ th, td {
 
 th {
     background-color: var(--color3);
-    color: var(--font-color);
+    color: var(--header-color);
     text-align: center;
     padding: 5px;
     font-size: 15px;
@@ -318,7 +340,7 @@ tr:nth-child(even) {
 }
 
 td:hover {
-    background-color: var(--hover-row, #65a9ee);
+    background-color: var(--hover-row,  #b3ffff);
 }
 
 /* Footer */
@@ -349,7 +371,7 @@ footer {
 
 .add-button:hover,
 .modal button:hover {
-    background: var(--color3);
+    background: skyblue;
 }
 
 /* Modal Styles */

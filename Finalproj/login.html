@@ -44,19 +44,15 @@
                 let username = document.getElementById("username").value.trim();
                 let password = document.getElementById("password").value.trim();
                 
-                let passwordPattern = /^[A-Z](?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/;
+                let passwordPattern = /^[A-Z]{7,}$/;
             
-                if (username === "" || password === "") {
-                    alert("Please fill in all required fields.");
-                    return;
+                if (username === "admin" || password === "password") {
+                    alert("Welcome Vince.");
+                    window.location.href = "MainHome.html";
                 }
-            
-                if (!passwordPattern.test(password)) {
-                    alert("Password must:\n- Start with a capital letter\n- Be at least 8 characters long\n- Contain a number");
-                    return;
+                else {
+                    alert("Invalid Credentials!");
                 }
-            
-                window.location.href = "Home.html"; 
             }
             </script>
             

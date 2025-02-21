@@ -22,6 +22,7 @@
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <img src="RecreatedFIGMAlogo.PNG" alt="Company Icon" class="company-icon">
+      <button class="close-btn" style="font-size: 200%;" onclick="closeSidebar()">☰</button>
     </div>
 
     <ul>
@@ -147,10 +148,12 @@
 
               <h2>Laptop Table</h2>
               <button id="open-modal" class="add-button">+ Add New Laptop</button>
+              <button id="open-modal1" class="add-btn-edit">Edit</button>
+              <button id="open-modal2" class="add-btn-filter">Filter</button>
 
               <div class="popup-form"></div>
               <div class="fillup-form">
-                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <button class="close-btn" id="close-modal">&times;</button>
                 <h2>Add Laptop</h2>
                 <label for="employee">Employee Name:</label>
                 <input type="text" id="employee" placeholder="Enter name">
@@ -165,11 +168,57 @@
                 <input type="date" id="purchase-date">
 
                 <div class="button-container">
-                  <button class="cancel" onclick="closeModal()">Cancel</button>
+                  <button class="cancel" id="cancel-modal">Cancel</button>
                   <button class="save">Save</button>
-
                 </div>
               </div>
+
+              <div class="popup-form"></div>
+              <div class="filter-form">
+                <button class="close-btn" id="close-filter">&times;</button>
+                <h2>Filter Laptops</h2>
+              
+                <label for="filter-employee">Employee Name:</label>
+                <input type="text" id="filter-employee" placeholder="Search by name">
+              
+                <label for="filter-device">Device Name:</label>
+                <input type="text" id="filter-device" placeholder="Search by device">
+              
+                <label for="filter-serial">Serial Number:</label>
+                <input type="text" id="filter-serial" placeholder="Search by serial">
+              
+                <label for="filter-date">Purchase Date:</label>
+                <input type="date" id="filter-date">
+              
+                <div class="button-container">
+                  <button class="cancel" id="clear-filter">Clear</button>
+                  <button class="apply">Apply Filter</button>
+                </div>
+              </div>
+              
+
+              <div class="popup2-form"></div>
+              <div class="filter-form">
+                <button class="close-btn" id="close-modal">&times;</button>
+                <h2>Add Laptop</h2>
+                <label for="employee">Employee Name:</label>
+                <input type="text" id="employee" placeholder="Enter name">
+
+                <label for="device">Device Name:</label>
+                <input type="text" id="device" placeholder="Enter device">
+
+                <label for="serial">Serial Number:</label>
+                <input type="text" id="serial" placeholder="Enter serial">
+
+                <label for="purchase-date">Purchase Date:</label>
+                <input type="date" id="purchase-date">
+
+                <div class="button-container">
+                  <button class="cancel" id="cancel-modal">Cancel</button>
+                  <button class="save">Save</button>
+                </div>
+              </div>
+              
           </div>
 
           <tr>
@@ -201,14 +250,14 @@
             <td>7KJ2PH3</td>
             <td>New Laptop Dell (Mat Black)</td>
             <td>
-              <select>
+              <select title="location">
                 <option>1NK Center</option>
                 <option>2nd Office</option>
                 <option>Warehouse</option>
               </select>
             </td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Sir Benjie</option>
                 <option>Ma'am Bev</option>
                 <option>Cedric Lunar</option>
@@ -231,7 +280,7 @@
             <td onclick="toggleBoolean(this)">Working</td>
             <td>Quarterly</td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Cedric Lunar</option>
                 <option>Kimm Carl Buban</option>
                 <option>Jhomark Alber</option>
@@ -250,14 +299,14 @@
             <td>7KJ2PH3</td>
             <td>New Laptop Dell (Mat Black)</td>
             <td>
-              <select>
+              <select title="location">
                 <option>1NK Center</option>
                 <option>2nd Office</option>
                 <option>Warehouse</option>
               </select>
             </td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Sir Benjie</option>
                 <option>Ma'am Bev</option>
                 <option>Cedric Lunar</option>
@@ -280,7 +329,7 @@
             <td onclick="toggleBoolean(this)">Working</td>
             <td>Quarterly</td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Cedric Lunar</option>
                 <option>Kimm Carl Buban</option>
                 <option>Jhomark Alber</option>
@@ -299,14 +348,14 @@
             <td>7KJ2PH3</td>
             <td>New Laptop Dell (Mat Black)</td>
             <td>
-              <select>
+              <select title="Office">
                 <option>1NK Center</option>
                 <option>2nd Office</option>
                 <option>Warehouse</option>
               </select>
             </td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Sir Benjie</option>
                 <option>Ma'am Bev</option>
                 <option>Cedric Lunar</option>
@@ -329,7 +378,7 @@
             <td onclick="toggleBoolean(this)">Working</td>
             <td>Quarterly</td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Cedric Lunar</option>
                 <option>Kimm Carl Buban</option>
                 <option>Jhomark Alber</option>
@@ -348,14 +397,14 @@
             <td>7KJ2PH3</td>
             <td>New Laptop Dell (Mat Black)</td>
             <td>
-              <select>
+              <select title="office">
                 <option>1NK Center</option>
                 <option>2nd Office</option>
                 <option>Warehouse</option>
               </select>
             </td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Sir Benjie</option>
                 <option>Ma'am Bev</option>
                 <option>Cedric Lunar</option>
@@ -378,7 +427,7 @@
             <td onclick="toggleBoolean(this)">Working</td>
             <td>Quarterly</td>
             <td>
-              <select>
+              <select title="employee">
                 <option>Cedric Lunar</option>
                 <option>Kimm Carl Buban</option>
                 <option>Jhomark Alber</option>
@@ -406,6 +455,10 @@
     function toggleSidebar() {
       let sidebar = document.getElementById('sidebar');
       sidebar.classList.toggle('open');
+    }
+    function closeSidebar() {
+      let sidebar = document.getElementById('sidebar');
+      sidebar.classList.remove('open');
     }
   </script>
 </body>
